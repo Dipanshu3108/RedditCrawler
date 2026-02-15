@@ -25,18 +25,16 @@ st.markdown("""
     --surface:   #111116;
     --surface2:  #1a1a22;
     --border:    #2a2a38;
-    --red:       #FF5F1F; /* primary orange accent */
+    --red:       #e63946;
     --red-dim:   #7a1e26;
-    --amber:     #FF5F1F; /* keep amber aligned to orange */
-    --green:     #39FF14; /* neon green */
+    --amber:     #f4a261;
+    --green:     #52b788;
     --muted:     #5a5a7a;
-    --text:      #ffffff; /* primary UI text now white */
-    --text-dim:  #bfc7c0;
+    --text:      #d8d8e8;
+    --text-dim:  #8888aa;
     --mono:      'Courier Prime', monospace;
     --sans:      'DM Sans', sans-serif;
     --display:   'Bebas Neue', sans-serif;
-    --glow-green: rgba(57, 255, 20, 0.20);
-    --glow-orange: rgba(255, 95, 31, 0.16);
   }
 
   html, body, [data-testid="stAppViewContainer"] {
@@ -68,10 +66,9 @@ st.markdown("""
     font-family: var(--display);
     font-size: 3.8rem;
     letter-spacing: 0.1em;
-    color: var(--green);
+    color: var(--red);
     line-height: 1;
     margin: 0;
-    text-shadow: 0 0 12px var(--glow-green);
   }
   .app-subtitle {
     font-family: var(--mono);
@@ -95,7 +92,7 @@ st.markdown("""
   }
   .stTextInput > div > div > input:focus {
     border-color: var(--red) !important;
-    box-shadow: 0 0 10px var(--glow-orange) !important;
+    box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.15) !important;
   }
   .stTextInput > label {
     font-family: var(--mono) !important;
@@ -107,7 +104,7 @@ st.markdown("""
 
   /* ── Buttons ── */
   .stButton > button {
-    background: var(--amber) !important;
+    background: var(--red) !important;
     color: #fff !important;
     border: none !important;
     border-radius: 4px !important;
@@ -117,12 +114,10 @@ st.markdown("""
     padding: 0.6rem 2rem !important;
     transition: background 0.2s, transform 0.1s !important;
     width: 100% !important;
-    box-shadow: 0 8px 24px var(--glow-orange);
   }
   .stButton > button:hover {
-    background: #e04f1a !important;
+    background: #c1121f !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 12px 32px var(--glow-orange);
   }
   .stButton > button:active { transform: translateY(0) !important; }
 
@@ -145,20 +140,17 @@ st.markdown("""
   .stage-card.running {
     border-left-color: var(--amber);
     color: var(--amber);
-    background: rgba(255, 95, 31, 0.04);
-    text-shadow: 0 0 8px var(--glow-orange);
+    background: rgba(244, 162, 97, 0.06);
   }
   .stage-card.done {
     border-left-color: var(--green);
     color: var(--text);
-    background: rgba(57, 255, 20, 0.03);
-    text-shadow: 0 0 8px var(--glow-green);
+    background: rgba(82, 183, 136, 0.05);
   }
   .stage-card.error {
     border-left-color: var(--red);
     color: var(--red);
-    background: rgba(255, 95, 31, 0.06);
-    text-shadow: 0 0 6px var(--glow-orange);
+    background: rgba(230, 57, 70, 0.07);
   }
   .stage-icon { font-size: 1rem; min-width: 1.2rem; text-align: center; }
   .stage-label { flex: 1; }

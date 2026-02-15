@@ -1,0 +1,23 @@
+Using the Reddit post data and analysis below, write a complete, publishable horror short story.
+
+## Source Data
+```json
+{{STRUCTURED_JSON}}
+```
+
+## Editorial Analysis
+{{LLM_ANALYSIS}}
+
+## Your Instructions
+
+Transform the events described into a gripping first-person horror story. You are the narrator — this happened to YOU.
+
+Rules:
+- Preserve the core events and details from the source material faithfully
+- Expand the narrator's internal experience: their heartbeat, their breathing, what they smell, what their hands are doing
+- The motion detection box is not a bug — treat it as a real, malevolent presence
+- The final notification "Motion detected — Behind You" must be the last line of the story
+- Add one original sensory detail the original post didn't mention — something small that makes it feel real (a smell, a sound from childhood, the feeling of the floor)
+- Do NOT explain what the entity is — ambiguity is the point
+
+Write the full story now.

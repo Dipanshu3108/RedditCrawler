@@ -1,0 +1,9 @@
+# Core agentic framework
+langgraph>=0.2.0
+langchain-core>=0.3.0
+
+# HTTP clients
+requests>=2.31.0
+
+# Type support (Python < 3.11 compatibility)
+typing-extensions>=4.9.0

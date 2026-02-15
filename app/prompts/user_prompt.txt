@@ -1,0 +1,7 @@
+Please analyze the following Reddit post. The data has been extracted and structured for you:
+
+```json
+{{STRUCTURED_JSON}}
+```
+
+Provide your full analysis following the structure defined in your instructions.

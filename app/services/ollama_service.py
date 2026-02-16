@@ -7,7 +7,8 @@ from app.logger import get_logger
 logger = get_logger(__name__)
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-REQUEST_TIMEOUT = 120  # seconds — local LLMs can be slow on first call
+OLLAMA_CLOUD_BASE_URL = os.getenv("OLLAMA_CLOUD_BASE_URL", "https://ollama.com")
+REQUEST_TIMEOUT = 300  # seconds — cloud APIs can be slower than local LLMs
 
 
 # def call_ollama(model: str, system_prompt: str, user_prompt: str) -> str:
@@ -83,7 +84,8 @@ def call_ollama(
         num_gpu:       GPU layers.
         penalize_newline: Penalize newlines.
     """
-    endpoint = f"{OLLAMA_BASE_URL}/api/chat"
+    base_url = OLLAMA_CLOUD_BASE_URL if api_key else OLLAMA_BASE_URL
+    endpoint = f"{base_url}/api/chat"
 
     headers = {}
     if api_key:

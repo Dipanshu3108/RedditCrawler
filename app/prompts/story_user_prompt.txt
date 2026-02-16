@@ -1,6 +1,16 @@
-**Objective:** Using the provided JSON data and context, transform the information into a gripping, high-word-count first-person narrative in the [INSERT GENRE HERE] genre.
+**Objective:** Using the provided JSON data and context, transform the information into a gripping, high-word-count first-person narrative.
 
 **Target Length:** 1,850 – 2,150 words.
+
+**Source Data:**
+
+**Structured JSON:**
+```json
+{{STRUCTURED_JSON}}
+```
+
+**LLM Analysis:**
+{{LLM_ANALYSIS}}
 
 **Narrative Guidelines:**
 * **First-Person Immersion:** You are the narrator—this is your life. Expand on your internal experience: your thoughts, your physical sensations, and your immediate reactions to the unfolding events.

@@ -158,3 +158,6 @@ Edit the files in `app/prompts/` to change LLM behaviour:
 - **Multiple LLM calls**: Fan out from `build_json` to parallel analysis nodes
 - **Streaming output**: Switch `stream: False` to `stream: True` in `ollama_service.py`
 - **Web UI**: Wrap `run_pipeline()` in a FastAPI endpoint
+
+### To run:
+- streamlit run .\streamlit_app.py

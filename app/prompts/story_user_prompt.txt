@@ -1,23 +1,15 @@
-Using the Reddit post data and analysis below, write a complete, publishable horror short story.
+**Objective:** Using the provided JSON data and context, transform the information into a gripping, high-word-count first-person narrative in the [INSERT GENRE HERE] genre.
 
-## Source Data
-```json
-{{STRUCTURED_JSON}}
-```
+**Target Length:** 1,850 – 2,150 words.
 
-## Editorial Analysis
-{{LLM_ANALYSIS}}
+**Narrative Guidelines:**
+* **First-Person Immersion:** You are the narrator—this is your life. Expand on your internal experience: your thoughts, your physical sensations, and your immediate reactions to the unfolding events.
+* **The "Human" Element:** Develop the narrator’s backstory and personality. Give the reader a reason to care about your journey before the primary conflict or change occurs.
+* **Sensory Depth:** Incorporate original sensory details not mentioned in the source material—a specific scent, a localized sound, or a unique texture—to anchor the setting.
+* **The Progression:** Each event from the JSON data should feel like a natural stepping stone in the story, building toward a significant emotional or narrative payoff.
+* **The Pivot:** Include a moment of profound realization or a shift in the status quo where the narrator can no longer go back to how things were.
+* **The Ending:** The story must culminate in a way that feels earned, reflecting the tone of the genre and the data provided.
 
-## Your Instructions
-
-Transform the events described into a gripping first-person horror story. You are the narrator — this happened to YOU.
-
-Rules:
-- Preserve the core events and details from the source material faithfully
-- Expand the narrator's internal experience: their heartbeat, their breathing, what they smell, what their hands are doing
-- The motion detection box is not a bug — treat it as a real, malevolent presence
-- The final notification "Motion detected — Behind You" must be the last line of the story
-- Add one original sensory detail the original post didn't mention — something small that makes it feel real (a smell, a sound from childhood, the feeling of the floor)
-- Do NOT explain what the entity is — ambiguity is the point
-
-Write the full story now.
+**Required Formatting:**
+* **Title:** Bold on the first line.
+* **Spacing:** Paragraphs separated by blank lines to allow the prose to breathe.

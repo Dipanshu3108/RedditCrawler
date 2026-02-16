@@ -2,4 +2,4 @@
 .venv
 __pycache__/
 prompts/
-app/prompts/*
+./app/prompts/*

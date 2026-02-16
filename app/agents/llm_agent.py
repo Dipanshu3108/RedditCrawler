@@ -42,11 +42,12 @@ def run_llm_analysis(state: WorkflowState) -> WorkflowState:
         json_str = json.dumps(state["structured_json"], indent=2, ensure_ascii=False)
         user_prompt = user_prompt_template.replace("{{STRUCTURED_JSON}}", json_str)
 
-        model = os.getenv("OLLAMA_MODEL", "")
+        model = os.getenv("OLLAMA_MODEL_LOCAL", "")
         response = call_ollama(
             model=model,
             system_prompt=system_prompt,
             user_prompt=user_prompt,
+            temperature=0.5,
         )
 
         return {**state, "llm_response": response}

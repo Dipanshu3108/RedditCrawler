@@ -41,11 +41,14 @@ def run_story_writer(state: WorkflowState) -> WorkflowState:
             .replace("{{LLM_ANALYSIS}}", llm_analysis)
         )
 
-        model = os.getenv("OLLAMA_MODEL", "llama3.2")
+        model = os.getenv("OLLAMA_MODEL_CLOUD", "glm-5:cloud")
+        api_key = os.getenv("OLLAMA_API_KEY", "")
         story = call_ollama(
             model=model,
             system_prompt=system_prompt,
             user_prompt=user_prompt,
+            api_key=api_key or None,
+            temperature=0.7,
         )
 
         return {**state, "story": story}

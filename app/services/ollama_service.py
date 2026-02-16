@@ -10,7 +10,59 @@ OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 REQUEST_TIMEOUT = 120  # seconds — local LLMs can be slow on first call
 
 
-def call_ollama(model: str, system_prompt: str, user_prompt: str) -> str:
+# def call_ollama(model: str, system_prompt: str, user_prompt: str) -> str:
+    # """
+    # Sends a chat completion request to a locally running Ollama instance.
+
+    # Args:
+    #     model:         The Ollama model name (e.g. "llama3.2", "mistral", "gemma2")
+    #     system_prompt: The system-level instruction for the LLM.
+    #     user_prompt:   The user message containing the structured JSON payload.
+
+    # Returns:
+    #     str: The LLM's response text.
+
+    # Raises:
+    #     requests.HTTPError: If the Ollama API returns an error status.
+    #     ValueError: If the response structure is unexpected.
+    # """
+    # endpoint = f"{OLLAMA_BASE_URL}/api/chat"
+
+    # payload = {
+    #     "model": model,
+    #     "stream": False,
+    #     "messages": [
+    #         {"role": "system", "content": system_prompt},
+    #         {"role": "user",   "content": user_prompt},
+    #     ],
+    # }
+def call_ollama(
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+    api_key: str | None = None,
+    temperature: float | None = None,
+    top_p: float | None = None,
+    top_k: int | None = None,
+    min_p: float | None = None,
+    typical_p: float | None = None,
+    tfs_z: float | None = None,
+    repeat_last_n: int | None = None,
+    repeat_penalty: float | None = None,
+    presence_penalty: float | None = None,
+    frequency_penalty: float | None = None,
+    mirostat: int | None = None,
+    mirostat_tau: float | None = None,
+    mirostat_eta: float | None = None,
+    num_predict: int | None = None,
+    seed: int | None = None,
+    stop: list[str] | None = None,
+    num_ctx: int | None = None,
+    num_batch: int | None = None,
+    num_thread: int | None = None,
+    num_gpu: int | None = None,
+    penalize_newline: bool | None = None,
+) -> str:
     """
     Sends a chat completion request to a locally running Ollama instance.
 
@@ -18,15 +70,49 @@ def call_ollama(model: str, system_prompt: str, user_prompt: str) -> str:
         model:         The Ollama model name (e.g. "llama3.2", "mistral", "gemma2")
         system_prompt: The system-level instruction for the LLM.
         user_prompt:   The user message containing the structured JSON payload.
-
-    Returns:
-        str: The LLM's response text.
-
-    Raises:
-        requests.HTTPError: If the Ollama API returns an error status.
-        ValueError: If the response structure is unexpected.
+        temperature:   Sampling temperature (0.0–1.0).
+        top_p, top_k, min_p, typical_p, tfs_z: Sampling controls.
+        repeat_last_n, repeat_penalty, presence_penalty, frequency_penalty: Repetition controls.
+        mirostat, mirostat_tau, mirostat_eta: Mirostat controls.
+        num_predict:   Max tokens to predict.
+        seed:          RNG seed.
+        stop:          Stop sequences.
+        num_ctx:       Context size.
+        num_batch:     Batch size.
+        num_thread:    CPU threads.
+        num_gpu:       GPU layers.
+        penalize_newline: Penalize newlines.
     """
     endpoint = f"{OLLAMA_BASE_URL}/api/chat"
+
+    headers = {}
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
+
+    options = {
+        "temperature": temperature,
+        "top_p": top_p,
+        "top_k": top_k,
+        "min_p": min_p,
+        "typical_p": typical_p,
+        "tfs_z": tfs_z,
+        "repeat_last_n": repeat_last_n,
+        "repeat_penalty": repeat_penalty,
+        "presence_penalty": presence_penalty,
+        "frequency_penalty": frequency_penalty,
+        "mirostat": mirostat,
+        "mirostat_tau": mirostat_tau,
+        "mirostat_eta": mirostat_eta,
+        "num_predict": num_predict,
+        "seed": seed,
+        "stop": stop,
+        "num_ctx": num_ctx,
+        "num_batch": num_batch,
+        "num_thread": num_thread,
+        "num_gpu": num_gpu,
+        "penalize_newline": penalize_newline,
+    }
+    options = {k: v for k, v in options.items() if v is not None}
 
     payload = {
         "model": model,
@@ -37,8 +123,16 @@ def call_ollama(model: str, system_prompt: str, user_prompt: str) -> str:
         ],
     }
 
+    if options:
+        payload["options"] = options
+
     logger.debug("Calling Ollama endpoint %s model=%s", endpoint, model)
-    response = requests.post(endpoint, json=payload, timeout=REQUEST_TIMEOUT)
+    response = requests.post(
+        endpoint,
+        json=payload,
+        headers=headers if headers else None,
+        timeout=REQUEST_TIMEOUT,
+    )
     try:
         response.raise_for_status()
     except Exception:

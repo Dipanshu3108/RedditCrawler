@@ -43,10 +43,13 @@ def run_llm_analysis(state: WorkflowState) -> WorkflowState:
         user_prompt = user_prompt_template.replace("{{STRUCTURED_JSON}}", json_str)
 
         model = os.getenv("OLLAMA_MODEL_LOCAL", "")
+        # model = os.getenv("OLLAMA_MODEL_CLOUD", "glm-5:cloud")
+        api_key = os.getenv("OLLAMA_API_KEY", "")
         response = call_ollama(
             model=model,
             system_prompt=system_prompt,
             user_prompt=user_prompt,
+            api_key=api_key or None,
             temperature=0.5,
         )
 

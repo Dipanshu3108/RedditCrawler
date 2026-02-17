@@ -693,8 +693,8 @@ def render_results(result: dict):
 
 render_header()
 
-model_name = os.getenv("OLLAMA_MODEL", "llama3.2")
-base_url_env = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+model_name = os.getenv("OLLAMA_MODEL_CLOUD", "")
+base_url_env = os.getenv("OLLAMA_CLOUD_BASE_URL", "")
 
 # ── State-driven layout ────────────────────────────────────────────────────────
 is_running = st.session_state.pipeline_running
